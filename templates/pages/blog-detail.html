@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+{% load blog_tags %}
+{% block description %}
+    <meta name="description" content="{{ post.description }}">
+{% endblock %}
+{% block title %}
+{{ post.title }}
+{% endblock %}
+{% block content %}
+<nav aria-label="breadcrumb">
+  <ol class="breadcrumb">
+    <li class="breadcrumb-item"><a href="{% url 'igcae:landing'%}">Home</a></li>
+    <li class="breadcrumb-item"><a href="{% url 'blog:post_list'%}">Blog</a></li>
+    <li class="breadcrumb-item active" aria-current="page">{{ post.title }}</li>
+  </ol>
+</nav>
+<div class="container">
+  <div class="row">
+    <div class="col-lg-9">
+
+        {{ post.content | safe }}
+
+    </div>
+    <aside class="col-lg-3" id="sidebar">
+      <h3>Latest Posts</h3>
+      {% show_latest_posts 3 %}
+    </aside>
+  </div>
+</div>
+{% endblock %}

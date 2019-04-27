@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+
+{% block content %}
+<nav aria-label="breadcrumb">
+  <ol class="breadcrumb">
+    {# <li class="breadcrumb-item"><a href="{% url 'igcae:landing'%}">Home</a></li> #}
+    <li class="breadcrumb-item active" aria-current="page">Blog</li>
+  </ol>
+</nav>
+<div class="container">
+  <div class="row">
+    <div class="col-lg-9">
+      {% for post in posts %}
+      <article class="post-item">
+        <div class="">
+          <a href="{{ post.get_absolute_url }}"><h2>{{ post.title }}</h2></a>
+          <span>{{ post.publish }}</span>
+          <p>{{ post.description }}</p>
+        </div>
+        <div class="cover">
+          <img src="" alt="">
+        </div>
+      </article>
+      {% endfor %}
+    </div>
+    <aside class="col-lg-3">
+
+    </aside>
+  </div>
+</div>
+
+{% include 'components/pagination.html' with page=page_obj %}
+{% endblock %}

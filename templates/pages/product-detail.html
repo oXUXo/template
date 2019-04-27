@@ -1,0 +1,13 @@
+{% extends 'base.html'%}
+
+{% block content %}
+<nav aria-label="breadcrumb">
+  <ol class="breadcrumb">
+    <li class="breadcrumb-item"><a href="{% url 'igcae:landing'%}">Home</a></li>
+    <li class="breadcrumb-item"><a href="{% url 'product:product-list'%}">Product</a></li>
+    <li class="breadcrumb-item active" aria-current="page">{{product.name}}</li>
+  </ol>
+</nav>
+<h1>{{ product.name}}</h1>
+<p>{{ product.oe }}</p>
+{% endblock %}

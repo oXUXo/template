@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<nav aria-label="breadcrumb">
+  <ol class="breadcrumb">
+    <li class="breadcrumb-item"><a href="{% url 'home:landing'%}">Home</a></li>
+    <li class="breadcrumb-item active" aria-current="page">Product</li>
+  </ol>
+</nav>
+  <div class="row">
+    <div class="col-md-2">
+      {% for category in categories %}
+      <ul>
+        <li><a href="#">{{ category.name }}</a></li>
+      </ul>
+      {% endfor %}
+    </div>
+    <div class="col-md-10">
+      <div class="product-list d-flex">
+        {% for product in products %}
+        <article class="product-card">
+          <a class="" href="{{ product.get_absolute_url }}">
+            <img src="{{product.image.url}}" alt="">
+            <h4>{{ product.name }}</h4>
+          </a>
+
+        </article>
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+{% endblock %}
